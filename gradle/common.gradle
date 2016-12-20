@@ -1,0 +1,15 @@
+// apply plugin here
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+apply from: "${rootProject.projectDir}/gradle/dependencies.gradle"
+
+//noinspection GroovyUnusedAssignment
+sourceCompatibility = 1.8
+//noinspection GroovyUnusedAssignment
+targetCompatibility = 1.8
+
+compileJava {
+    options.encoding = "utf-8"
+}
+
+

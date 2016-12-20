@@ -1,0 +1,4 @@
+rootProject.name = 'tanu-im'
+include 'im-main'
+include 'updater'
+

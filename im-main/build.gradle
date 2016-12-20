@@ -1,0 +1,19 @@
+apply from: "${rootProject.projectDir}/gradle/common.gradle"
+apply plugin: 'com.github.johnrengelman.shadow'
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3'
+    compile 'commons-io:commons-io'
+    compile 'org.slf4j:slf4j-api'
+    compile 'ch.qos.logback:logback-classic'
+    compile 'net.lingala.zip4j:zip4j'
+    compile files('lib/filedrop.jar')
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Morinoko Messager',
+                'Implementation-Version': '0.9.1',
+                'Main-Class': 'org.tanuneko.im.AppRunner'
+    }
+}

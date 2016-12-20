@@ -1,0 +1,116 @@
+
+repositories {
+    mavenCentral()
+}
+
+project.ext {
+    // spring
+    springVersion = '4.3.2.RELEASE'
+    // springboot
+    springBootVersion = '1.4.0.RELEASE'
+    // JSON
+    jacksonVersion = '2.8.2'
+    // unit test
+    junitVersion = '4.12'
+    hamcrestVersion = '1.3'
+    // util
+    commonsLang3Version = '3.5'
+    commonsIOVersion = '2.5'
+    // logging
+    slf4jVersion = '1.7.21'
+    logbackVersion = '1.1.5'
+    // scala-library
+    scalaVersion = '2.11.8'
+    scalaTestVersion = '3.0.0'
+    // zip4j
+    zip4jVersion = '1.3.2'
+
+    // mockito
+    mockitoVersion = '1.10.19'
+
+    // power mockito
+    powerMockVersion = '1.6.6'
+}
+
+//noinspection GroovyMissingReturnStatement
+dependencyManagement {
+
+    dependencies {
+        // spring
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.springframework:spring-core:${springVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.springframework:spring-test:${springVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.springframework:spring-web:${springVersion}"
+
+        // spring boot
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+
+        // JSON
+        //noinspection GroovyAssignabilityCheck
+        dependency "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+
+        // unit test
+        //noinspection GroovyAssignabilityCheck
+        dependency "junit:junit:${junitVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.hamcrest:hamcrest-all:${hamcrestVersion}"
+
+        // util
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.apache.commons:commons-lang3:${commonsLang3Version}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "commons-io:commons-io:${commonsIOVersion}"
+
+        // logging
+        //noinspection GroovyAssignabilityCheck
+        dependency "ch.qos.logback:logback-classic:${logbackVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.slf4j:slf4j-api:${slf4jVersion}"
+
+        // scala
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.scala-lang:scala-library:${scalaVersion}"
+        //noinspection GroovyAssignabilityCheck
+        dependency "org.scalatest:scalatest_2.11:${scalaTestVersion}"
+
+        // zip4j
+        //noinspection GroovyAssignabilityCheck
+        dependency "net.lingala.zip4j:zip4j:${zip4jVersion}"
+
+        // mockito
+        dependency "org.mockito:mockito-all:${mockitoVersion}"
+
+        // powermock
+        dependency "org.powermock:powermock-module-junit4:${powerMockVersion}"
+        dependency "org.powermock:powermock-core:${powerMockVersion}"
+        dependency "org.powermock:powermock-api-mockito:${powerMockVersion}"
+    }
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api'
+    testCompile 'org.hamcrest:hamcrest-all'
+    testCompile('junit:junit:4.12') {
+        exclude group: 'org.hamcrest'
+    }
+    testCompile 'ch.qos.logback:logback-classic'
+    testCompile 'org.scala-lang:scala-library'
+    testCompile 'org.scalatest:scalatest_2.11'
+    testCompile 'org.mockito:mockito-all'
+    testCompile 'org.powermock:powermock-core'
+    testCompile('org.powermock:powermock-api-mockito:1.6.6') {
+        exclude group: "org.hamcrest"
+    }
+    testCompile('org.powermock:powermock-module-junit4') {
+        exclude group: "junit:junit"
+    }
+}
