@@ -16,6 +16,7 @@ public class Resource {
     public static final String RES_SYS_GENERIC_PORT = "generic.port";
     public static final String RES_USER_NAME = "user.userName";
     public static final String RES_GROUP_NAME = "user.groupName";
+    public static final String RES_MAINPANEL_IMAGE = "user.mainpanel_image";
     public static final String RES_MESSAGE_LOG = "user.messageLog";
     public static final String RES_USER_ICON = "user.icon";
     public static final String RES_PREFERRED_IF = "user.preferredNetworkIF";

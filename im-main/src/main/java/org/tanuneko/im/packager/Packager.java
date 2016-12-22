@@ -91,6 +91,8 @@ public class Packager {
         if(!new File(confPath).mkdir()) {
             throw new IllegalStateException("Creating conf dir failed");
         }
+        FileUtils.copyFile(new File(rcPath + SEP + "images" + SEP + "panel" + SEP + "panel.png"),
+                new File(iconPath + SEP + "default.png"));
         FileUtils.copyFile(new File(rcPath + SEP + "images" + SEP + "icon" + SEP + "default.png"),
                            new File(iconPath + SEP + "default.png"));
         FileUtils.copyFile(new File(rcPath + SEP + "conf" + SEP + "tanuim_template.properties"),

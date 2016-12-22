@@ -1,6 +1,7 @@
 package org.tanuneko.im.desktop;
 
 import org.tanuneko.im.util.ImageUtil;
+import org.tanuneko.im.util.Resource;
 import org.tanuneko.im.util.StringResource;
 
 import javax.imageio.ImageIO;
@@ -10,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -22,7 +24,9 @@ public class MorinokoPanel extends JPanel implements ActionListener, MouseListen
     private Image image;
 
     public MorinokoPanel() throws IOException {
-        image = ImageIO.read(MorinokoPanel.class.getClassLoader().getResourceAsStream(DEFAULT_PANEL_IMAGE));
+     //   image = ImageIO.read(MorinokoPanel.class.getClassLoader().getResourceAsStream(DEFAULT_PANEL_IMAGE));
+        File f = new File(Resource.getAppProperty(Resource.RES_MAINPANEL_IMAGE));
+        image = ImageIO.read(f);
     }
 
     public void init() {

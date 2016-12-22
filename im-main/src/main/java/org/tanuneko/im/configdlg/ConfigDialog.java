@@ -34,6 +34,7 @@ public class ConfigDialog extends JDialog implements ActionListener, MouseListen
     private static final Logger LOG = LoggerFactory.getLogger(ConfigDialog.class);
     private JTextField userNameInput;
     private JTextField groupNameInput;
+    private JLabel morinokoPanelImageLoc;
     private JLabel userIconLoc;
     private JLabel messageLogLoc;
     private JLabel appLogLoc;
@@ -52,11 +53,13 @@ public class ConfigDialog extends JDialog implements ActionListener, MouseListen
         setLocation((int)prtLoc.getX(), (int)prtLoc.getY());
         setResizable(false);
 
-        setLayout(new GridLayout(10, 2));
+        setLayout(new GridLayout(11, 2));
         JLabel userNameLabel = new JLabel(StringResource.get(StringResource.CONFIGDLG_USERNAME));
         userNameLabel.setPreferredSize(new Dimension(100, 15));
         JLabel groupNameLabel = new JLabel(StringResource.get(StringResource.CONFIGDLG_GROUPNAME));
         groupNameLabel.setPreferredSize(new Dimension(100, 15));
+        JLabel morinokoPanelImgLabel = new JLabel(StringResource.get(StringResource.CONFIGDLG_MORINOKOIMG));
+        morinokoPanelImgLabel.setPreferredSize(new Dimension(100, 15));
         JLabel userIconLabel = new JLabel(StringResource.get(StringResource.CONFIGDLG_USERICON));
         userIconLabel.setPreferredSize(new Dimension(100, 15));
         JLabel messageLogLabel = new JLabel(StringResource.get(StringResource.CONFIGDLG_MSGLOG));
@@ -76,6 +79,8 @@ public class ConfigDialog extends JDialog implements ActionListener, MouseListen
         userNameInput.setPreferredSize(new Dimension(300, 15));
         groupNameInput = new JTextField();
         groupNameInput.setPreferredSize(new Dimension(300, 15));
+        morinokoPanelImageLoc = new JLabel();
+        morinokoPanelImageLoc.setPreferredSize(new Dimension(300, 15));
         userIconLoc = new JLabel();
         userIconLoc.setPreferredSize(new Dimension(300, 15));
         messageLogLoc = new JLabel();
@@ -103,6 +108,9 @@ public class ConfigDialog extends JDialog implements ActionListener, MouseListen
         initField(groupNameInput, Resource.RES_GROUP_NAME);
         add(groupNameLabel);
         add(groupNameInput);
+        initLabel(morinokoPanelImageLoc, Resource.RES_MAINPANEL_IMAGE);
+        add(morinokoPanelImgLabel);
+        add(morinokoPanelImageLoc);
         initLabel(userIconLoc, Resource.RES_USER_ICON);
         add(userIconLabel);
         add(userIconLoc);
@@ -181,6 +189,7 @@ public class ConfigDialog extends JDialog implements ActionListener, MouseListen
         boolean updated = false;
         updated = validateAndRenewFieldIfRequired(userNameInput, sb, props, Resource.RES_USER_NAME, updated);
         updated = validateAndRenewFieldIfRequired(groupNameInput, sb, props, Resource.RES_GROUP_NAME, updated);
+        updated = validateAndRenewLabelIfRequired(morinokoPanelImageLoc, sb, props, Resource.RES_MAINPANEL_IMAGE, updated);
         updated = validateAndRenewLabelIfRequired(userIconLoc, sb, props, Resource.RES_USER_ICON, updated);
         updated = validateAndRenewLabelIfRequired(messageLogLoc, sb, props, Resource.RES_MESSAGE_LOG, updated);
         updated = validateAndRenewLabelIfRequired(appLogLoc, sb, props, Resource.RES_APP_LOG, updated);
@@ -254,6 +263,18 @@ public class ConfigDialog extends JDialog implements ActionListener, MouseListen
              if(retval == JFileChooser.APPROVE_OPTION) {
                  messageLogLoc.setText(fc.getSelectedFile().getAbsolutePath());
              }
+        }
+        else if(source == morinokoPanelImageLoc) {
+            fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+            fc.addChoosableFileFilter(imageFilter);
+            fc.setAcceptAllFileFilterUsed(false);
+            fc.setCurrentDirectory(new File(morinokoPanelImageLoc.getText()));
+            retval = fc.showOpenDialog(this);
+            if(retval == JFileChooser.APPROVE_OPTION) {
+                morinokoPanelImageLoc.setText(fc.getSelectedFile().getAbsolutePath());
+            }
         }
         else if(source == appLogLoc) {
             fc = new JFileChooser();

@@ -52,6 +52,7 @@ public class StringResource {
     public static final String CONFIGDLG_USERNAME = "configdlg.username";
     public static final String CONFIGDLG_GROUPNAME = "configdlg.groupname";
     public static final String CONFIGDLG_USERICON = "configdlg.usericon";
+    public static final String CONFIGDLG_MORINOKOIMG = "configdlg.morinokoimg";
     public static final String CONFIGDLG_MSGLOG = "configdlg.messagelog";
     public static final String CONFIGDLG_APPLOG = "configdlg.applog";
     public static final String CONFIGDLG_LOCALE = "configdlg.locale";

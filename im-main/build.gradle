@@ -13,7 +13,7 @@ dependencies {
 jar {
     manifest {
         attributes 'Implementation-Title': 'Morinoko Messager',
-                'Implementation-Version': '0.9.1',
+                'Implementation-Version': '0.9.4',
                 'Main-Class': 'org.tanuneko.im.AppRunner'
     }
 }

@@ -1,0 +1,6 @@
+
+* New Feature
+TANUIM-24 Make main panel image switchable from Config Dialog
+
+* Bug
+
